@@ -75,12 +75,16 @@ export class TasksComponent implements OnInit {
       this.loadedTasks = [];
     }
 
+    this.isLoading = true;
+
     this.http.post('https://bsviraj-task-manager.herokuapp.com/tasks', this.tasksForm.value, {
       headers: this.authHeader
     }).subscribe( (res) => {
       this.loadedTasks.push(res);
-      this.myTimer();    
+      this.myTimer(); 
+      this.isLoading = false;
     }, (error) => {
+      this.isLoading = false;
       console.log(error['error']);
     });
   }
@@ -99,12 +103,12 @@ export class TasksComponent implements OnInit {
       return tasksArray
     }))
     .subscribe( (tasks) => {
+      this.isLoading = false;
       this.loadedTasks = tasks;
     }, (error) => {
+      this.isLoading = false;
       console.log(error['error']);
     });
-
-    this.isLoading = false;
     
   }
 
@@ -124,11 +128,12 @@ export class TasksComponent implements OnInit {
     }))
     .subscribe( (tasks) => {
       this.loadedTasks = tasks;
+      this.isLoading = false;
     }, (error) => {
       console.log(error['error']);
+      this.isLoading = false;
     });
 
-    this.isLoading = false;
   }
 
   markCompleted(id, pos) {

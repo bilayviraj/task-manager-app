@@ -1,6 +1,6 @@
 {
-  "name": "ng-complete-guide-update",
-  "version": "0.0.0",
+  "name": "task-manager-app",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
