@@ -1,0 +1,62 @@
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+<div class="container">
+    <div class="slider-container my-container" [ngClass]="{'right-panel-active': showSignUpForm}" *ngIf="!isLoading">
+        <div class="form-container sign-up-container">
+            <div class="close" (click)="onClose()">+</div>
+            <form [formGroup]="signupForm" (submit)="onSignupSubmit()">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f" disabled></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Name" formControlName="name"/>
+                <input type="email" placeholder="Email" formControlName="email"/>
+                <input type="password" placeholder="Password" formControlName="password"/>
+                <div class="alert-msg" role="alert" *ngIf="signupError">
+                    {{ signupError }}
+                </div>
+                <button [disabled]="!signupForm.valid" >Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form [formGroup]="signinForm" (submit)="onSigninSubmit()">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="email" placeholder="Email" formControlName="email"/>
+                <input type="password" placeholder="Password" formControlName="password"/>
+                <div class="alert-msg" role="alert" *ngIf="signinError">
+                    {{ signinError }}
+                </div>
+                <a href="#">Forgot your password?</a>
+                <button [disabled]="!signinForm.valid">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>
+                        To keep connected with us please login with your personal info
+                    </p>
+                    <button class="ghost" id="signIn" (click)="changeForm()">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <div class="close" (click)="onClose()">+</div>
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp" (click)="changeForm()">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- <script src="https://kit.fontawesome.com/dcd4d08721.js" crossorigin="anonymous"></script> //for icons -->

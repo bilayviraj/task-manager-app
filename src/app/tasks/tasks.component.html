@@ -1,0 +1,78 @@
+<div class="container">
+  <div style=" padding: 10px;">
+    <h4 *ngIf="isSignedIn">
+      Welcome, {{ userName }}
+    </h4>
+  </div>
+  
+  <div>
+      <button
+      class="btn btn-danger signin-btn"
+      (click)="onSignIn()"
+      *ngIf="!isSignedIn"
+    >
+     Sign in
+    </button>
+  
+    <button
+      class="btn btn-danger signin-btn"
+      (click)="onSignOut()"
+      *ngIf="isSignedIn"
+    >
+     Sign out
+    </button>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <form [formGroup]="tasksForm">
+          <div class="form-group note-container">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              placeholder="Add a task..."
+              autocomplete="off"
+              formControlName="description"
+            />
+            <span style="font-size: 35px; margin: 5px;" >
+              <a type="submit" (click)="onCreateTask()" class="click-a "><i class="fas fa-plus-circle" style="color: rgb(212, 82, 125);"></i></a>
+            </span>
+          </div>
+          <div class="alert-msg" role="alert" *ngIf="!isSignedIn">
+            Please Sign in to add tasks!
+          </div>
+          <div class="alert-msg" role="alert" *ngIf="taskAddedOn">
+            Task added successfully!
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr />
+    <div class="row" *ngIf="isSignedIn">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+          <nav aria-label="...">
+              <ul class="pagination pagination-lg">
+                <li class="page-item"><a class="page-link" href="javascript:void(0);" (click)="fetchNewTasks()">Pending Tasks</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);" (click)="fetchCompletedTasks()">Completed Tasks</a></li>
+              </ul>
+            </nav>
+            <p *ngIf="loadedTasks.length < 1" style="color: red;">No tasks available!</p>
+        <ul class="list-group" *ngIf="loadedTasks.length >= 1">
+          <li class="list-group-item display-notes" *ngFor="let task of loadedTasks; let i=index">
+            <h5>{{ task.description }}</h5>
+            <div style="font-size: 15px; margin: 5px;" class="done click-a" *ngIf="task.completed === false">
+              <a type="submit" (click)="markCompleted(task._id, i)"><i class="far fa-check-square" style="color: rgb(145, 167, 165);"></i></a>
+            </div>
+            <div style="font-size: 15px; margin: 5px;" class="trash click-a">
+              <a type="submit" (click)="deleteTask(task._id, i)"><i class="far fa-trash-alt" style="color: rgb(145, 167, 165);"></i></a>
+            </div>
+          </li>
+        </ul>
+        <p *ngIf="isLoading" style="color: red;">Loading...</p>
+      </div>
+    </div>
+  </div>
+</div>
