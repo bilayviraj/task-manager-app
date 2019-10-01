@@ -70,7 +70,8 @@ export class TasksComponent implements OnInit {
      return undefined;
     }
 
-    if(this.loadedTasks[0]['completed']){
+    if(this.loadedTasks[0]){
+      if(this.loadedTasks[0]['completed'])
       this.loadedTasks = [];
     }
 
