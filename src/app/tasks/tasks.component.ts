@@ -91,6 +91,7 @@ export class TasksComponent implements OnInit {
 
   fetchNewTasks() {
     this.isLoading = true;
+    this.loadedTasks = [];
     this.http
     .get('https://bsviraj-task-manager.herokuapp.com/tasks?completed=false',  {
       headers: this.authHeader
@@ -114,6 +115,7 @@ export class TasksComponent implements OnInit {
 
   fetchCompletedTasks() {
     this.isLoading = true;
+    this.loadedTasks = [];
 
     this.http
     .get('https://bsviraj-task-manager.herokuapp.com/tasks?completed=true',  {
