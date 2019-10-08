@@ -76,7 +76,6 @@ export class SliderSignFormComponent implements OnInit {
       this.signinError = undefined;
     }, (error) => {
       this.isLoading = false;
-      console.log(error)
       if((typeof error['error']) === 'string'){
         this.signinError = error['error'];
       } else {
