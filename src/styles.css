@@ -16,11 +16,3 @@ app-slider-sign-form {
 	flex-direction: column;
 	height: 100vh;
 }
-
-.preload-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	height: 100vh;
-}
