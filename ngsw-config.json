@@ -14,7 +14,10 @@
           "/*.js"
         ],
         "urls": [
-          "https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap"
+          "https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap",
+          "https://bsviraj-task-manager-app.herokuapp.com/assets/scalableVectorGraphics/checked.svg",
+          "https://bsviraj-task-manager-app.herokuapp.com/assets/scalableVectorGraphics/delete.svg",
+          "https://bsviraj-task-manager-app.herokuapp.com/assets/scalableVectorGraphics/plus.svg"
         ]
       }
     }, {
