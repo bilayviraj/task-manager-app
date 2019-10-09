@@ -4,6 +4,21 @@
       Welcome, {{ userName }}
     </h4>
   </div>
+
+  <button
+      class="btn offline-btn "
+      *ngIf="isSignedIn && !isConnected"
+    >
+     {{ status }}
+    </button>
+
+    <button
+      class="btn offline-btn btn-primary "
+      (click)="fetchOfflineTasks()"
+      *ngIf="isSignedIn && goOnline && isConnected"
+    >
+     GO ONLINE
+    </button>
   
   <div class="header-btn">
       <button
@@ -20,21 +35,6 @@
       *ngIf="isSignedIn"
     >
      Sign out
-    </button>
-
-    <button
-      class="btn offline-btn "
-      *ngIf="isSignedIn && !isConnected"
-    >
-     {{ status }}
-    </button>
-
-    <button
-      class="btn offline-btn btn-primary "
-      (click)="fetchOfflineTasks()"
-      *ngIf="isSignedIn && goOnline && isConnected"
-    >
-     GO ONLINE
     </button>
 
   </div>
